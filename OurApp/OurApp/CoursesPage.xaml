@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:OurApp;assembly=OurApp"
+             x:Class="OurApp.CoursesPage">
+ 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:FistDayConverter x:Key="DD" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout Margin="10" BackgroundColor="#21E2D9" Orientation="Vertical">
+        <StackLayout x:Name="StateStack">
+            <Label x:Name="ListState" 
+               VerticalOptions="CenterAndExpand" Text="Список пуст" TextColor="White" FontSize="30" HorizontalOptions="CenterAndExpand" Margin="20"></Label>
+        </StackLayout>
+        
+        <StackLayout VerticalOptions="Center" HorizontalOptions="End">
+            <ListView x:Name="CourseList" ItemSelected="OnItemSelected" SeparatorColor="#25FFFC" VerticalScrollBarVisibility="Never" Margin="10">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="7*" />
+                                        <ColumnDefinition Width="6*" />
+                                        <ColumnDefinition Width="7*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand" TextColor="Black" FontSize="Large" Grid.Row="0" Grid.Column="0" />
+                                    <Label Text="{Binding Duration}" TextColor="Black" FontSize="Medium" Grid.Row="0" Grid.Column="1" />
+                                    <Label Text="{Binding FirstDay, Converter={StaticResource DD}}" TextColor="Black" FontSize="Medium" Grid.Row="0" Grid.Column="2" />
+                                    <ImageButton Source="Resource/delete1.png" CommandParameter="{Binding Id}" Clicked="Delete" Aspect="AspectFit" BackgroundColor="Transparent" Padding="3" Margin="2" Grid.Row="0" Grid.Column="3" />
+                                </Grid>
+
+
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <StackLayout Orientation="Vertical" VerticalOptions="End">
+            <Button
+                x:Name="addOne" 
+                HorizontalOptions="CenterAndExpand"
+				Text="Добавить курс"
+				TextColor="Black"
+				Pressed="AddNewOne"
+                Margin="0, 20, 0, 15"
+                WidthRequest="180"
+                HeightRequest="60"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

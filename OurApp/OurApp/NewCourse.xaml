@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:OurApp;assembly=OurApp"
+             x:Class="OurApp.NewCourse">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:Freq_converter x:Key="Conva" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="10" Padding="10" BackgroundColor="#21E2D9">
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                <Label x:Name="labelCourseName" Text="Курс" TextColor="Black" FontSize="Title" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Entry x:Name="CourseName" Text="{Binding Name}" Keyboard="Text" Placeholder="Введите название препарата" HorizontalTextAlignment="Center" VerticalTextAlignment="End" HeightRequest="70"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="labelCourseMethod" Text="Выберете &#10;метод лечения" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                <Picker x:Name="courseMethod" ItemDisplayBinding="{Binding Method}" SelectedItem="{Binding Method}" HorizontalOptions="FillAndExpand">
+                    <Picker.Items>
+                        <x:String>Таблетка</x:String>
+                        <x:String>Капсула</x:String>
+                        <x:String>Капли</x:String>
+                        <x:String>Микстура</x:String>
+                        <x:String>Мазь</x:String>
+                        <x:String>Укол</x:String>
+                        <x:String>Процедура</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="labelCourseQuantity" Text="Какая дозировка&#10;за приём" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                <Picker x:Name="courseQuantity" ItemDisplayBinding="{Binding Quantity}" SelectedItem="{Binding Quantity}" HorizontalOptions="FillAndExpand">
+                    <Picker.Items>
+                        <x:String>1/2 таблетки</x:String>
+                        <x:String>1 таблетка</x:String>
+                        <x:String>2 таблетки</x:String>
+                        <x:String>4 таблетки</x:String>
+                        <x:String>5 мг.</x:String>
+                        <x:String>10 мг.</x:String>
+                        <x:String>15 мг.</x:String>
+                        <x:String>20 мг.</x:String>
+                        <x:String>10 мл.</x:String>
+                        <x:String>20 мл.</x:String>
+                        <x:String>50 мл.</x:String>
+                        <x:String>Оставить пустым</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="labelCourseFrequency" Text="Количество&#10;приёмов в день" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                <Picker x:Name="CourseFrequency" ItemDisplayBinding="{Binding Frequency, Converter={StaticResource Conva}}" SelectedItem="{Binding Frequency, Converter={StaticResource Conva}}" HorizontalOptions="FillAndExpand">
+                    <Picker.Items>
+                        <x:String>1</x:String>
+                        <x:String>2</x:String>
+                        <x:String>3</x:String>
+                        <x:String>4</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="labelCourseDuration" Text="Количество&#10;приёмов в неделю" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                <Picker x:Name="courseDuration" ItemDisplayBinding="{Binding Duration}" SelectedItem="{Binding Duration}" HorizontalOptions="FillAndExpand">
+                    <Picker.Items>
+                        <x:String>Ежедневно</x:String>
+                        <x:String>Через день</x:String>
+                        <x:String>Раз в 3 дня</x:String>
+                        <x:String>1 раз в неделю</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="labelCourseState" Text="Время относительно&#10;приёма еды" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                <Picker x:Name="courseState" ItemDisplayBinding="{Binding State}" SelectedItem="{Binding State}" HorizontalOptions="FillAndExpand">
+                    <Picker.Items>
+                        <x:String>До еды</x:String>
+                        <x:String>Во время еды</x:String>
+                        <x:String>После еды</x:String>
+                        <x:String>Независимо</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="labelCourseLasting" Text="Продолжительность&#10;курса" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                <Picker x:Name="courseLasting" ItemDisplayBinding="{Binding Last}" SelectedItem="{Binding Last}" HorizontalOptions="FillAndExpand">
+                    <Picker.Items>
+                        <x:String>10 дней</x:String>
+                        <x:String>15 дней</x:String>
+                        <x:String>30 дней (1 месяц)</x:String>
+                        <x:String>60 дней (2 месяц)</x:String>
+                        <x:String>120 дней (4 месяца)</x:String>
+                        <x:String>180 дней (6 месяцев)</x:String>
+                        <x:String>1 год</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="labelFirstDay" Text="Дата &#10;первого приёма" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                <DatePicker Format="dd.MM.yyyy" Date="{Binding FirstDay}" HorizontalOptions="FillAndExpand">
+                    <DatePicker.MinimumDate>01/6/2020</DatePicker.MinimumDate>
+                    <DatePicker.MaximumDate>01/6/2030</DatePicker.MaximumDate>
+                </DatePicker>
+            </StackLayout>
+            <StackLayout x:Name="Warning" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label x:Name="lbl" Text="" TextColor="Red" FontSize="18" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <Button
+                x:Name="acceptCourse" 
+                HorizontalOptions="CenterAndExpand"
+				Text="Подтвердить"
+				TextColor="Black"
+				Pressed="AcceptCourse"
+                Margin="0, 20, 0, 20"
+                WidthRequest="180"
+                HeightRequest="60"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
